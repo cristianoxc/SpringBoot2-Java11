@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cristianoxc.course.entities.enums.OrderStatus;
-import com.cristianoxc.course.entities.pk.OrderItemPK;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order")
@@ -33,11 +33,12 @@ public class Order implements Serializable{
 	
 	private Integer orderStatus;
 	
+	@JsonIgnore	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private User client;
 
-	/* No mappedBy o id eh o objeto  OrderItem que é um private OrderItemPK*/
+	/* No mappedBy o id eh o objeto  OrderItem que é um private OrderItemPK que possui o order*/
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
 	

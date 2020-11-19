@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 
 import com.cristianoxc.course.entities.Order;
 import com.cristianoxc.course.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Embeddable
 public class OrderItemPK implements Serializable {
@@ -22,7 +23,7 @@ public class OrderItemPK implements Serializable {
 	private Product product;
 	
 	// Era aqui que estava chamando o pedido associado a este pedido
-	@JsonIgonre
+	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}
